@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="bootstrap.css">
+</head>
+
+<body>
+  <div class="container">
+    <h3>Gugudan</h3>
+    <form class="">
+      <label for="">From</label>
+      <input type="number" min="1" max="20" id = "1">
+      &nbsp; ~ &nbsp;
+      <label for="">To</label>
+      <input type="number" min="1" max="20" id = "2">
+      &nbsp;
+      <button type="button" onclick="buttenClick()">Show</button>
+    </form>
+    <table class="table table=striped">
+
+      <thead>
+        <tr id="header">
+          <!-- <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>
+          <th>10</th>
+          <th>11</th>
+          <th>12</th>
+          <th>13</th>
+          <th>14</th>
+          <th>15</th>
+          <th>16</th>
+          <th>17</th>
+          <th>18</th>
+          <th>19</th>
+          <th>20</th> -->
+        </tr>
+      </thead>
+
+      <tbody id = "target">
+        <!-- <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+
+
+
+</html>
+<script type="text/javascript">
+
+var ths = [];
+var tds;
+var trs = [];
+
+for (var i = 1; i <= 20; i++) {// 행
+  tds = [];
+  ths.push("<th>" + i + "</th>")
+  for (var j = 1; j <= 20; j++) {// 열
+    // console.log(i + "*" + j + "=" + (i*j));
+    tds.push("<td>" + j + "*" + i + "=" + (i*j) + "</td>");
+  }
+  trs.push("<tr>"+tds.join("")+"</tr>");
+}
+
+console.log(trs);
+
+var tbody = document.getElementById("target");
+tbody.innerHTML = trs.join("");
+hbody = document.getElementById("header");
+hbody.innerHTML = ths.join("");
+
+function buttenClick() {
+  var from = document.getElementById("1");
+  var To = document.getElementById("2");
+  var a = from.value;
+  var b = To.value;
+
+  var ths = [];
+  var tds;
+  var trs = [];
+
+  for (var i = a; i <= b; i++) {
+    ths.push("<th>" + i + "</th>")
+  }
+
+  for (var i = 1; i <= 20; i++) {// 행
+    tds = [];
+
+    for (var j = a; j <= b; j++) {// 열
+
+      tds.push("<td>" + j + "*" + i + "=" + (i*j) + "</td>");
+      // console.log(i + "*" + j + "=" + (i*j));
+      // if ((a <= j) && (j <= b)) {
+      //   tds.push("<td>" + j + "*" + i + "=" + (i*j) + "</td>");
+      // } else {
+      //   tds.push("<td> </td>");
+      // }
+    }
+    trs.push("<tr>"+tds.join("")+"</tr>");
+  }
+  var tbody = document.getElementById("target");
+  tbody.innerHTML = trs.join("");
+  hbody = document.getElementById("header");
+  hbody.innerHTML = ths.join("");
+}
+
+</script>
